@@ -1,0 +1,125 @@
+E:/ZJU_All/ZJU_Third/cs61c_experiment/lab30_Risc5CPU/src_lwsw/Decode.v {1 {vlog -work work -vopt -stats=none E:/ZJU_All/ZJU_Third/cs61c_experiment/lab30_Risc5CPU/src_lwsw/Decode.v
+Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+-- Compiling module Decode
+
+Top level modules:
+	Decode
+
+} {} {}} E:/ZJU_All/ZJU_Third/cs61c_experiment/lab30_Risc5CPU/src_lwsw/Risc5CPU.v {1 {vlog -work work -vopt -stats=none E:/ZJU_All/ZJU_Third/cs61c_experiment/lab30_Risc5CPU/src_lwsw/Risc5CPU.v
+Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+-- Compiling module Risc5CPU
+
+Top level modules:
+	Risc5CPU
+
+} {} {}} E:/ZJU_All/ZJU_Third/cs61c_experiment/lab30_Risc5CPU/src_lwsw/mux_2to1.v {1 {vlog -work work -vopt -stats=none E:/ZJU_All/ZJU_Third/cs61c_experiment/lab30_Risc5CPU/src_lwsw/mux_2to1.v
+Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+-- Compiling module mux_2to1
+
+Top level modules:
+	mux_2to1
+
+} {} {}} E:/ZJU_All/ZJU_Third/cs61c_experiment/lab30_Risc5CPU/src_lwsw/Registers_RAWRegisters.v {1 {vlog -work work -vopt -stats=none E:/ZJU_All/ZJU_Third/cs61c_experiment/lab30_Risc5CPU/src_lwsw/Registers_RAWRegisters.v
+Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+-- Compiling module Registers
+-- Compiling module RAWRegisters
+
+Top level modules:
+	RAWRegisters
+
+} {} {}} E:/ZJU_All/ZJU_Third/cs61c_experiment/lab30_Risc5CPU/src_lwsw/ALU.v {1 {vlog -work work -vopt -stats=none E:/ZJU_All/ZJU_Third/cs61c_experiment/lab30_Risc5CPU/src_lwsw/ALU.v
+Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+-- Compiling module ALU
+
+Top level modules:
+	ALU
+
+} {} {}} E:/ZJU_All/ZJU_Third/cs61c_experiment/lab30_Risc5CPU/src_lwsw/Risc5CPU_tb.v {1 {vlog -work work -vopt -stats=none E:/ZJU_All/ZJU_Third/cs61c_experiment/lab30_Risc5CPU/src_lwsw/Risc5CPU_tb.v
+Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+-- Compiling module Risc5CPU_tb_v
+
+Top level modules:
+	Risc5CPU_tb_v
+
+} {} {}} E:/ZJU_All/ZJU_Third/cs61c_experiment/lab30_Risc5CPU/src_lwsw/adder_4bits.v {1 {vlog -work work -vopt -stats=none E:/ZJU_All/ZJU_Third/cs61c_experiment/lab30_Risc5CPU/src_lwsw/adder_4bits.v
+Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+-- Compiling module adder_4bits
+
+Top level modules:
+	adder_4bits
+
+} {} {}} E:/ZJU_All/ZJU_Third/cs61c_experiment/lab30_Risc5CPU/src_lwsw/EX.v {1 {vlog -work work -vopt -stats=none E:/ZJU_All/ZJU_Third/cs61c_experiment/lab30_Risc5CPU/src_lwsw/EX.v
+Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+-- Compiling module EX
+
+Top level modules:
+	EX
+
+} {} {}} E:/ZJU_All/ZJU_Third/cs61c_experiment/lab30_Risc5CPU/src_lwsw/ID.v {1 {vlog -work work -vopt -stats=none E:/ZJU_All/ZJU_Third/cs61c_experiment/lab30_Risc5CPU/src_lwsw/ID.v
+Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+-- Compiling module ID
+
+Top level modules:
+	ID
+
+} {} {}} E:/ZJU_All/ZJU_Third/cs61c_experiment/lab30_Risc5CPU/src_lwsw/Pipeline.v {1 {vlog -work work -vopt -stats=none E:/ZJU_All/ZJU_Third/cs61c_experiment/lab30_Risc5CPU/src_lwsw/Pipeline.v
+Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+-- Compiling module IF_ID
+-- Compiling module ID_EX
+-- Compiling module EX_MEM
+-- Compiling module MEM_WB
+
+Top level modules:
+	IF_ID
+	ID_EX
+	EX_MEM
+	MEM_WB
+
+} {} {}} E:/ZJU_All/ZJU_Third/cs61c_experiment/lab30_Risc5CPU/src_lwsw/adder_32bits.v {1 {vlog -work work -vopt -stats=none E:/ZJU_All/ZJU_Third/cs61c_experiment/lab30_Risc5CPU/src_lwsw/adder_32bits.v
+Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+-- Compiling module adder_32bits
+
+Top level modules:
+	adder_32bits
+
+} {} {}} E:/ZJU_All/ZJU_Third/cs61c_experiment/lab30_Risc5CPU/src_lwsw/BranchTest.v {1 {vlog -work work -vopt -stats=none E:/ZJU_All/ZJU_Third/cs61c_experiment/lab30_Risc5CPU/src_lwsw/BranchTest.v
+Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+-- Compiling module BranchTest
+
+Top level modules:
+	BranchTest
+
+} {} {}} E:/ZJU_All/ZJU_Third/cs61c_experiment/lab30_Risc5CPU/src_lwsw/IF.v {1 {vlog -work work -vopt -stats=none E:/ZJU_All/ZJU_Third/cs61c_experiment/lab30_Risc5CPU/src_lwsw/IF.v
+Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+-- Compiling module IF1
+
+Top level modules:
+	IF1
+
+} {} {}} E:/ZJU_All/ZJU_Third/cs61c_experiment/lab30_Risc5CPU/src_lwsw/mux_3to1.v {1 {vlog -work work -vopt -stats=none E:/ZJU_All/ZJU_Third/cs61c_experiment/lab30_Risc5CPU/src_lwsw/mux_3to1.v
+Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+-- Compiling module mux_3to1
+
+Top level modules:
+	mux_3to1
+
+} {} {}} E:/ZJU_All/ZJU_Third/cs61c_experiment/lab30_Risc5CPU/src_lwsw/InstructionROM.v {1 {vlog -work work -vopt -stats=none E:/ZJU_All/ZJU_Third/cs61c_experiment/lab30_Risc5CPU/src_lwsw/InstructionROM.v
+Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+-- Compiling module InstructionROM
+
+Top level modules:
+	InstructionROM
+
+} {} {}} E:/ZJU_All/ZJU_Third/cs61c_experiment/lab30_Risc5CPU/vivado201704/Risc5CPU.srcs/sources_1/ip/DataRAM/DataRAM_sim_netlist.v {1 {vlog -work work -vopt -stats=none E:/ZJU_All/ZJU_Third/cs61c_experiment/lab30_Risc5CPU/vivado201704/Risc5CPU.srcs/sources_1/ip/DataRAM/DataRAM_sim_netlist.v
+Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+-- Compiling module DataRAM
+-- Compiling module DataRAM_dist_mem_gen_v8_0_12
+-- Compiling module DataRAM_dist_mem_gen_v8_0_12_synth
+-- Compiling module DataRAM_spram
+-- Compiling module glbl
+
+Top level modules:
+	DataRAM
+	glbl
+
+} {} {}}

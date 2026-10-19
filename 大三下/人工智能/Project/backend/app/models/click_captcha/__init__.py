@@ -1,0 +1,1 @@
+from app.models.click_captcha.recognizer import ClickCaptchaRecognizer

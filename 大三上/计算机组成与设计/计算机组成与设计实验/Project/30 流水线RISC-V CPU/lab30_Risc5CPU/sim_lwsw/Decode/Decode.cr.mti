@@ -1,0 +1,15 @@
+E:/ZJU_All/ZJU_Third/cs61c_experiment/lab30_Risc5CPU/src_lwsw/Decode.v {1 {vlog -work work -vopt -stats=none E:/ZJU_All/ZJU_Third/cs61c_experiment/lab30_Risc5CPU/src_lwsw/Decode.v
+Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+-- Compiling module Decode
+
+Top level modules:
+	Decode
+
+} {} {}} E:/ZJU_All/ZJU_Third/cs61c_experiment/lab30_Risc5CPU/src_lwsw/Decode_tb.v {1 {vlog -work work -vopt -stats=none E:/ZJU_All/ZJU_Third/cs61c_experiment/lab30_Risc5CPU/src_lwsw/Decode_tb.v
+Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+-- Compiling module Decode_tb
+
+Top level modules:
+	Decode_tb
+
+} {} {}}

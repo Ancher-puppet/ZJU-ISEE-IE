@@ -1,0 +1,8 @@
+set_property PACKAGE_PIN F15 [get_ports ButtonIn]
+set_property IOSTANDARD LVCMOS33 [get_ports ButtonIn]
+set_property IOSTANDARD LVCMOS33 [get_ports clk]
+set_property IOSTANDARD LVCMOS33 [get_ports led]
+set_property IOSTANDARD LVCMOS33 [get_ports reset]
+set_property PACKAGE_PIN R4 [get_ports clk]
+set_property PACKAGE_PIN T14 [get_ports led]
+set_property PACKAGE_PIN B22 [get_ports reset]
