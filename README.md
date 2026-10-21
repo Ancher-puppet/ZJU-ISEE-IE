@@ -38,16 +38,16 @@
 
 <table width="100%">
 <thead>
-<tr><th align="left">学期</th><th align="left">课程档案</th></tr>
+<tr><th align="left">编号</th><th align="left">学期 / 规模</th><th align="left">代表课程 / 备注</th></tr>
 </thead>
 <tbody>
-<tr><td><b>大一上</b><br><sub>23F</sub></td><td><b>9 门 · 24.5 学分 · 9 份记录</b><br>微积分（甲）I · 线性代数（甲）</td></tr>
-<tr><td><b>大一下</b><br><sub>23S</sub></td><td><b>13 门 · 30.5 学分 · 13 份记录</b><br>微积分（甲）II · 大学物理（甲）I</td></tr>
-<tr><td><b>大二上</b><br><sub>24F</sub></td><td><b>14 门 · 29.5 学分 · 14 份记录</b><br>电子电路基础 · 概率论与数理统计</td></tr>
-<tr><td><b>大二下</b><br><sub>24S</sub></td><td><b>10 门 · 22.5 学分 · 10 份记录</b><br>信号与系统 · 电磁场与电磁波</td></tr>
-<tr><td><b>大三上</b><br><sub>25F</sub></td><td><b>7 门 · 17.5 学分 · 7 份记录</b><br>通信原理 · 数字信号处理</td></tr>
-<tr><td><b>大三下</b><br><sub>25S</sub></td><td><b>8 门 · 17.5 学分 · 8 份记录</b><br>数字图像处理 · 人工智能</td></tr>
-<tr><td><b>合计</b></td><td><b>61 门 · 142.0 学分 · 61 份记录</b></td></tr>
+<tr><td><sub><samp>23F</samp></sub></td><td><b>大一上</b><br>9 门 · 24.5 学分 · 9 份记录</td><td>微积分（甲）I · 线性代数（甲） · C程序设计基础及实验</td></tr>
+<tr><td><sub><samp>23S</samp></sub></td><td><b>大一下</b><br>13 门 · 30.5 学分 · 13 份记录</td><td>微积分（甲）II · 大学物理（甲）I · 常微分方程</td></tr>
+<tr><td><sub><samp>24F</samp></sub></td><td><b>大二上</b><br>14 门 · 29.5 学分 · 14 份记录</td><td>电子电路基础 · 概率论与数理统计 · 工程训练</td></tr>
+<tr><td><sub><samp>24S</samp></sub></td><td><b>大二下</b><br>10 门 · 22.5 学分 · 10 份记录</td><td>信号与系统 · 电磁场与电磁波 · 数字系统设计</td></tr>
+<tr><td><sub><samp>25F</samp></sub></td><td><b>大三上</b><br>7 门 · 17.5 学分 · 7 份记录</td><td>通信原理 · 数字信号处理 · 天线理论与设计</td></tr>
+<tr><td><sub><samp>25S</samp></sub></td><td><b>大三下</b><br>8 门 · 17.5 学分 · 8 份记录</td><td>数字图像处理 · 人工智能 · 射频电路与系统设计实验</td></tr>
+<tr><td><sub><samp>Σ</samp></sub></td><td><b>合计</b><br>61 门 · 142.0 学分 · 61 份记录</td><td>2023–2026 · 六个学期 · 351 份 PDF</td></tr>
 </tbody>
 </table>
 
