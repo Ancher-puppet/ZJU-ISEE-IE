@@ -1,60 +1,77 @@
 <p align="center">
-  <img src="./assets/readme-banner.png" alt="ZJU · ISEE · IE" width="100%">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/hero-dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="./assets/hero-light.png">
+    <img src="./assets/hero-light.png" width="100%" alt="ZJU ISEE IE 信息工程课程档案 2023–2026">
+  </picture>
 </p>
 
 <p align="center">
   <b>浙江大学 · 信息与电子工程学院 · 信息工程</b><br>
-  <sub>2023 – 2026 · 课程资料与学习体验归档</sub>
+  <sub>2023 – 2026　·　六个学期　·　61 门课程　·　351 份资料</sub><br>
+  <sub>把三年课程档案做成一张可检索的信号图谱</sub>
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/ZJU-University-003f88?style=for-the-badge" alt="ZJU">
-  <img src="https://img.shields.io/badge/ISEE-Information%20Engineering-0b5cad?style=for-the-badge" alt="ISEE">
-  <img src="https://img.shields.io/badge/2023--2026-Undergraduate-2ea44f?style=for-the-badge" alt="2023-2026">
-  <img src="https://img.shields.io/badge/Archive-61%20Courses-1f6feb?style=for-the-badge" alt="61 Courses">
-  <img src="https://img.shields.io/badge/Privacy-Sanitized-6f42c1?style=for-the-badge" alt="Sanitized">
+  <img src="./assets/badges/zju-isee.png" alt="ZJU ISEE" height="28">
+  <img src="./assets/badges/ie.png" alt="Information Engineering" height="28">
+  <img src="./assets/badges/years.png" alt="2023–2026" height="28">
+  <img src="./assets/badges/courses.png" alt="61 Courses / 142.0 Credits" height="28">
+  <img src="./assets/badges/records.png" alt="61 Records / 351 PDFs" height="28">
+  <img src="./assets/badges/sanitized.png" alt="Sanitized" height="28">
 </p>
 
 <p align="center">
-  <a href="#仓库速览">仓库速览</a> ·
-  <a href="#快速导航">快速导航</a> ·
-  <a href="#课程地图">课程地图</a> ·
-  <a href="#使用指南">使用指南</a> ·
-  <a href="#声明">声明</a>
+  <a href="#仓库速览"><kbd>01</kbd> 速览</a>　·　<a href="#从这里开始"><kbd>02</kbd> 入口</a>　·　<a href="#课程图谱"><kbd>03</kbd> 图谱</a>　·　<a href="#学习路径"><kbd>04</kbd> 路径</a>　·　<a href="#使用指南"><kbd>05</kbd> 指南</a>　·　<a href="#声明"><kbd>06</kbd> 声明</a>
+</p>
+
+<p align="center">
+  <sub><samp>30.2636° N / 120.1200° E　·　ARCHIVE 23F—25S　·　REV 2026.10　·　SANITIZED</samp></sub>
 </p>
 
 ---
 
-> [!TIP]
-> 大多数课程都有独立的 **课程体验**，记录考核方式、学习建议与资料索引。  
-> 建议先读课程体验，再按需取用课件、复习资料和 Project。
-
 ## 仓库速览
 
-| 学期 | 课程 | 课程体验 | PDF 资料 | 仓库体积 | 个人信息 |
-| :---: | :---: | :---: | :---: | :---: | :---: |
-| **6** | **61** 门 | **60** 篇 | **351** 份 | **约 747 MiB** | **已脱敏** |
+> 六学期、61 门课程、142.0 学分。每门课都有独立目录；61 份课程记录中，60 篇为详细体验，`大学物理实验` 为成绩记录。
 
-> 覆盖 2023–2026 六个学期。`课程体验.md` 记录课程信息、考核方式、学习建议与资料索引；`复习资料/`、`Project/` 等按课程实际内容组织。  
-> 注：`大学物理实验` 暂未收录课程体验，其余 60 门课程均有。
+| 学期 | 代码 | 课程 | 学分 | 课程记录 | 代表课程 |
+| :-- | :--: | --: | --: | --: | :-- |
+| 大一上 | `23F` | 9 | 24.5 | 9 | 微积分（甲）I · 线性代数（甲）· C 程序设计基础及实验 |
+| 大一下 | `23S` | 13 | 30.5 | 13 | 微积分（甲）II · 大学物理（甲）I · 信息与电子工程导论 |
+| 大二上 | `24F` | 14 | 29.5 | 14 | 电子电路基础 · 大学物理（甲）II · 概率论与数理统计 |
+| 大二下 | `24S` | 10 | 22.5 | 10 | 信号与系统 · 数字系统设计 · 电磁场与电磁波 |
+| 大三上 | `25F` | 7 | 17.5 | 7 | 通信原理 · 计算机组成与设计 · 数字信号处理 |
+| 大三下 | `25S` | 8 | 17.5 | 8 | 数字图像处理 · 人工智能 · 通信原理实验 |
+| **合计** | `23F—25S` | **61** | **142.0** | **61** | — |
 
-## 快速导航
+<p align="center">
+  <img src="./assets/course-signal.png" width="100%" alt="61 门课程的学分信号图：按学期排列，标注学分与均值线">
+</p>
 
-| 学期 | 课程数 | 代表课程 | 入口 |
-| :---: | ---: | :--- | :---: |
-| 大一上 | 9 | 微积分（甲）I · 线性代数（甲）· C 程序设计 | [进入 →](./大一上/) |
-| 大一下 | 13 | 微积分（甲）II · 大学物理（甲）I · 信息与电子工程导论 | [进入 →](./大一下/) |
-| 大二上 | 14 | 电子电路基础 · 大学物理（甲）II · 概率论与数理统计 | [进入 →](./大二上/) |
-| 大二下 | 10 | 信号与系统 · 数字系统设计 · 电磁场与电磁波 | [进入 →](./大二下/) |
-| 大三上 | 7 | 通信原理 · 计算机组成与设计 · 数字信号处理 | [进入 →](./大三上/) |
-| 大三下 | 8 | 数字图像处理 · 人工智能 · 通信原理实验 | [进入 →](./大三下/) |
+> [!NOTE]
+> **档案规格**　61 门课程 · 61 份课程记录（60 篇详细体验 + 1 篇成绩记录） · 351 份 PDF · 约 747 MiB · 已脱敏  
+> **统计口径**　学分按课程目录标注累计；`大学物理实验` 计入 1.5 学分。
 
-## 课程地图
+## 从这里开始
 
-> 点击学期展开课程清单。每门课都可以直接进入文件夹，或打开对应的 `课程体验.md`。
+| 第一次来 | 期末复习 | 做 Project |
+| :-- | :-- | :-- |
+| 先在下方[课程图谱](#课程图谱)按学期定位课程，再打开 `课程体验.md`。<br><br>推荐起点：**信号与系统**、**通信原理**、**数字图像处理**。 | 进入课程的 `复习资料/`，优先看历年卷、答案与题型整理。<br><br>先读课程体验中的考核方式，再决定复习顺序。 | 进入课程的 `Project/`，里面有报告、代码、仿真工程与实验数据。<br><br>标有 `【参考】` 的内容请先核对课程要求。 |
+
+> [!TIP]
+> **搜索**：在仓库页按 <kbd>t</kbd> 进入文件查找；或在 GitHub 搜索框输入 `repo:Ancher-puppet/ZJU-ISEE-IE 关键词`。更多示例见[使用指南](#使用指南)。
+
+## 课程图谱
+
+> 六个学期构成一条从数理基础到系统与应用的信号链。展开任一学期，查看课程、学分与体验入口。
+
+<p align="center">
+  <img src="./assets/semester-chain.png" width="100%" alt="六学期课程信号链：FOUNDATION → CIRCUITS → SIGNALS → SYSTEMS → COMMUNICATION → APPLICATION">
+</p>
 
 <details>
-<summary><b>大一上</b> · 9 门课程</summary>
+<summary><b>大一上</b> · 9 门 · 24.5 学分 · <sub>23F / FOUNDATION</sub></summary>
 
 | 课程 | 学分 | 课程体验 |
 | :--- | ---: | :---: |
@@ -71,7 +88,7 @@
 </details>
 
 <details>
-<summary><b>大一下</b> · 13 门课程</summary>
+<summary><b>大一下</b> · 13 门 · 30.5 学分 · <sub>23S / CIRCUITS</sub></summary>
 
 | 课程 | 学分 | 课程体验 |
 | :--- | ---: | :---: |
@@ -92,12 +109,12 @@
 </details>
 
 <details>
-<summary><b>大二上</b> · 14 门课程</summary>
+<summary><b>大二上</b> · 14 门 · 29.5 学分 · <sub>24F / SIGNALS</sub></summary>
 
 | 课程 | 学分 | 课程体验 |
 | :--- | ---: | :---: |
 | [复变函数与积分变换](./大二上/复变函数与积分变换/) | 1.5 | [阅读](./大二上/复变函数与积分变换/课程体验.md) |
-| [大学物理实验](./大二上/大学物理实验/) | — | — |
+| [大学物理实验](./大二上/大学物理实验/) | 1.5 | [阅读](./大二上/大学物理实验/课程体验.md) |
 | [大学物理（甲）II](./大二上/大学物理（甲）II/) | 4.0 | [阅读](./大二上/大学物理（甲）II/课程体验.md) |
 | [工程训练](./大二上/工程训练/) | 1.5 | [阅读](./大二上/工程训练/课程体验.md) |
 | [新中国史](./大二上/新中国史/) | 1.5 | [阅读](./大二上/新中国史/课程体验.md) |
@@ -114,7 +131,7 @@
 </details>
 
 <details>
-<summary><b>大二下</b> · 10 门课程</summary>
+<summary><b>大二下</b> · 10 门 · 22.5 学分 · <sub>24S / SYSTEMS</sub></summary>
 
 | 课程 | 学分 | 课程体验 |
 | :--- | ---: | :---: |
@@ -132,7 +149,7 @@
 </details>
 
 <details>
-<summary><b>大三上</b> · 7 门课程</summary>
+<summary><b>大三上</b> · 7 门 · 17.5 学分 · <sub>25F / COMMUNICATION</sub></summary>
 
 | 课程 | 学分 | 课程体验 |
 | :--- | ---: | :---: |
@@ -147,7 +164,7 @@
 </details>
 
 <details>
-<summary><b>大三下</b> · 8 门课程</summary>
+<summary><b>大三下</b> · 8 门 · 17.5 学分 · <sub>25S / APPLICATION</sub></summary>
 
 | 课程 | 学分 | 课程体验 |
 | :--- | ---: | :---: |
@@ -162,23 +179,47 @@
 
 </details>
 
+## 学习路径
+
+> 四条参考路径，按课程依赖关系排列。它们不是培养方案，实际选课以当年培养方案与开课安排为准。
+
+| 路径 | 核心链路 | 适合 |
+| :-- | :-- | :-- |
+| 通信 / 射频 | 信号与系统 → 数字信号处理 → 通信原理 → 天线理论与设计 → 射频电路与系统设计实验 → 通信原理实验 | 无线通信、射频前端、基带算法 |
+| 信号 / 图像 | 线性代数（甲）→ 信号与系统 → 数字信号处理 → 数字图像处理 → 人工智能 | 图像处理、计算机视觉、多媒体 |
+| 智能系统 | C 程序设计基础及实验 → 人工智能基础（B）→ 离散数学 → 矩阵论 → 人工智能 → 数字图像处理 | 机器学习、系统实现 |
+| 电路 / 系统 | 电子电路基础 → 数字系统设计 → 电子电路设计实验 I/II → 计算机组成与设计 → 网络基础 | 硬件、嵌入式、体系结构 |
+
+<p align="center">
+  <img src="./assets/learning-paths.png" width="100%" alt="四条学习路径的信号流图：通信射频、信号图像、智能系统、电路系统">
+</p>
+
 ## 使用指南
 
 | 想做什么 | 去哪里 |
-| :--- | :--- |
-| 快速了解一门课 | 先读该课程文件夹下的 `课程体验.md` |
+| :-- | :-- |
+| 快速了解一门课 | 课程目录下的 `课程体验.md` |
 | 期末复习 / 刷题 | `复习资料/`：试卷、笔记、答案与题型整理 |
 | 做实验 / 课程项目 | `Project/`：报告、代码、仿真工程与实验数据 |
 | 看课件 / 作业要求 | `课程说明/`、`作业/` |
+| 找某一门课 | 上方[课程图谱](#课程图谱)展开对应学期，或在仓库内搜索课程名 |
 
 **命名约定**
 
-- `课程体验.md`：个人课程体验、考核方式、学习建议与资料索引。
+- `课程体验.md`：课程信息、成绩档位、考核方式、学习建议与资料索引。
 - `【参考】`：参考实现、往年资料或同学分享，便于对照学习。
 - `Project/`：课程项目、实验报告、代码与工程文件。
 - `复习资料/`：试卷、答案、笔记、知识点整理。
 
-## 仓库结构
+**搜索示例**
+
+```text
+repo:Ancher-puppet/ZJU-ISEE-IE 信号与系统
+repo:Ancher-puppet/ZJU-ISEE-IE path:大三下 人工智能
+repo:Ancher-puppet/ZJU-ISEE-IE 课程体验 通信原理
+```
+
+**仓库结构**
 
 ```text
 ZJU-ISEE-IE/
@@ -189,7 +230,8 @@ ZJU-ISEE-IE/
 ├── 大三上/            # 7 门课程
 ├── 大三下/            # 8 门课程
 ├── assets/
-│   └── readme-banner.png
+│   ├── badges/        # 本地徽章
+│   └── src/           # SVG 源文件
 └── README.md
 ```
 
@@ -202,6 +244,9 @@ ZJU-ISEE-IE/
 > 已对姓名、学号、PDF 作者元数据与隐藏文本做脱敏处理；课程要求中的虚构示例除外。  
 > 如仍有遗漏或侵权，请通过 Issue 联系，我会尽快处理。
 
+> [!NOTE]
+> 课程体验中的成绩仅以**档位 + 星级**表示，用于给出粗略参照；不记录精确分数、绩点、排名或个人信息，也不对资料可靠性作任何评级。
+
 <div align="center">
 
 ### ⭐ 如果这些资料对你有帮助
@@ -211,3 +256,7 @@ ZJU-ISEE-IE/
 <sub>Keep learning · Keep building</sub>
 
 </div>
+
+<p align="center">
+  <sub><samp>SIGNAL ATLAS · ZJU ISEE IE 2023–2026 · COMPILED FROM COURSE NOTES AND LATE NIGHTS</samp></sub>
+</p>
