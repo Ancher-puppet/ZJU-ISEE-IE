@@ -1,5 +1,7 @@
 <p align="center">
   <picture>
+    <source media="(max-width: 640px) and (prefers-color-scheme: dark)" srcset="./assets/hero-mobile-dark.png">
+    <source media="(max-width: 640px) and (prefers-color-scheme: light)" srcset="./assets/hero-mobile-light.png">
     <source media="(prefers-color-scheme: dark)" srcset="./assets/hero-dark.png">
     <source media="(prefers-color-scheme: light)" srcset="./assets/hero-light.png">
     <img src="./assets/hero-light.png" width="100%" alt="ZJU ISEE IE 信息工程课程档案 2023–2026">
