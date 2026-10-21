@@ -38,7 +38,7 @@
 
 <table width="100%">
 <thead>
-<tr><th align="left">编号</th><th align="left">学期 / 规模</th><th align="left">代表课程 / 备注</th></tr>
+<tr><th align="left">ID</th><th align="left">学期 / 规模</th><th align="left">代表课程 / 备注</th></tr>
 </thead>
 <tbody>
 <tr><td><sub><samp>23F</samp></sub></td><td><b>大一上</b><br>9 门 · 24.5 学分 · 9 份记录</td><td>微积分（甲）I · 线性代数（甲） · C程序设计基础及实验</td></tr>
