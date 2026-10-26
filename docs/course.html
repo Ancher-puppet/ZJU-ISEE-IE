@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>课程档案 · ZJU-ISEE-IE</title>
+<meta name="description" content="阅读课程记录，并按目录浏览课程资料。">
+<style>
+:root{
+  --ink:#1e2b2f;--body:#3f4c4e;--muted:#6d746f;--paper:#f3efe6;--white:#fbf8f1;
+  --accent:#255a6b;--accent-soft:#dfe9e9;--line:rgba(30,43,47,.16);--line-light:rgba(30,43,47,.08);
+  --orange:#d97757;--orange-deep:#b95837;
+  --note:#fbf3e2;--note-line:#e8d9bd;--blue:#5d91a1;
+  --sans:"PingFang SC","Hiragino Sans GB","Noto Sans CJK SC","Microsoft YaHei",sans-serif;
+  --serif:"Songti SC","STSong","Noto Serif CJK SC","Source Han Serif SC",Georgia,serif;
+  --mono:"SFMono-Regular","SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.75;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+.topbar{position:sticky;top:0;z-index:30;background:rgba(243,239,230,.94);border-bottom:1px solid var(--line);backdrop-filter:saturate(130%) blur(14px)}
+.topbar-in{max-width:1500px;min-height:64px;margin:auto;padding:0 32px;display:flex;align-items:center;gap:24px}
+.back-link,.source-link{color:var(--body);font-size:.85rem;transition:color .2s}
+.back-link:hover,.source-link:hover{color:var(--orange-deep)}
+.repo{margin:auto;color:var(--muted);font-family:var(--mono);font-size:.72rem;letter-spacing:.08em}
+.page{max-width:1500px;margin:auto;padding:46px 32px 64px}
+.course-heading{display:flex;align-items:end;justify-content:space-between;gap:32px;margin-bottom:32px}
+.term{margin:0 0 8px;color:var(--orange-deep);font-size:.79rem;font-weight:600;letter-spacing:.06em}
+h1{margin:0;font-family:var(--serif);font-size:clamp(2rem,4vw,3.35rem);line-height:1.2;font-weight:600;letter-spacing:-.025em}
+.course-heading>p{max-width:330px;margin:0;color:var(--muted);font-size:.84rem;text-align:right}
+.workspace{display:grid;grid-template-columns:minmax(340px,.8fr) minmax(560px,1.2fr);gap:30px;align-items:start}
+.experience{position:relative;min-width:0;background:var(--note);border:1px solid var(--note-line);box-shadow:0 18px 34px -26px rgba(70,52,25,.5)}
+.experience::before{content:"";position:absolute;top:-2px;left:32px;width:84px;height:7px;background:rgba(217,119,87,.62)}
+.note-heading{display:flex;justify-content:space-between;gap:20px;padding:22px 28px 15px;border-bottom:1px solid var(--note-line);color:#8a6b3f;font-size:.77rem}
+.note-heading span:first-child{font-weight:600;letter-spacing:.1em}
+.note-heading span:last-child{font-family:var(--mono);font-size:.66rem;letter-spacing:.08em}
+.markdown{padding:24px 28px 32px;color:#403b2c;font-size:.93rem;line-height:1.9;overflow-wrap:anywhere}
+.markdown>*:first-child{margin-top:0}
+.markdown>*:last-child{margin-bottom:0}
+.markdown h1,.markdown h2,.markdown h3{font-family:var(--serif);color:#322f25;line-height:1.45}
+.markdown h1{margin:0 0 20px;font-size:1.65rem}
+.markdown h2{margin:30px 0 12px;padding-bottom:7px;border-bottom:1px solid var(--note-line);font-size:1.16rem}
+.markdown h3{margin:24px 0 10px;font-size:1rem}
+.markdown p{margin:0 0 14px}
+.markdown blockquote{margin:0 0 22px;padding:12px 15px;background:rgba(255,255,255,.38);border-left:2px solid var(--orange);color:#6c5b3d;font-size:.86rem}
+.markdown blockquote p{margin:0}
+.markdown ul,.markdown ol{margin:0 0 18px;padding-left:1.4em}
+.markdown li{margin:7px 0}
+.markdown li::marker{color:var(--orange-deep)}
+.markdown a{color:#1f5a6b;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+.markdown code{padding:.15em .35em;background:rgba(255,255,255,.5);font-family:var(--mono);font-size:.86em}
+.markdown pre{padding:16px;background:#20343a;color:#f4f2e9;overflow:auto}
+.markdown pre code{padding:0;background:none;color:inherit}
+.markdown table{width:100%;margin:0 0 20px;border-collapse:collapse;font-size:.84rem}
+.markdown th,.markdown td{padding:8px 10px;border:1px solid var(--note-line);text-align:left;vertical-align:top}
+.markdown th{background:rgba(255,255,255,.36)}
+.finder{min-width:0;background:var(--white);border:1px solid rgba(30,43,47,.22);border-radius:10px;box-shadow:0 18px 40px -32px rgba(30,43,47,.65);overflow:hidden}
+.finder-toolbar{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;min-height:53px;padding:0 17px;background:#e9e2d5;border-bottom:1px solid rgba(30,43,47,.16)}
+.window-controls{display:flex;gap:8px}
+.window-controls i{display:block;width:11px;height:11px;border-radius:50%;background:#c8bfae}
+.window-controls i:first-child{background:#d97757}.window-controls i:nth-child(2){background:#d9b16b}.window-controls i:last-child{background:#7fa08d}
+.finder-title{font-size:.85rem;font-weight:600}
+.file-count{justify-self:end;color:var(--muted);font-size:.72rem}
+.finder-columns{display:flex;min-height:510px;max-height:68vh;overflow:auto;background:#f7f2e8;overscroll-behavior-x:contain}
+.finder-column{flex:0 0 252px;min-width:0;border-right:1px solid rgba(30,43,47,.1);background:#f7f2e8}
+.finder-column:only-child{flex:1}
+.finder-column.preview{flex-basis:330px;background:var(--white);overflow:auto}
+.column-label{position:sticky;top:0;z-index:2;margin:0;padding:10px 15px;background:rgba(247,242,232,.96);border-bottom:1px solid var(--line-light);color:var(--muted);font-size:.72rem;font-weight:600;backdrop-filter:blur(8px)}
+.preview .column-label{background:rgba(251,248,241,.96)}
+.file-list{margin:0;padding:6px;list-style:none}
+.file-row{width:100%;display:grid;grid-template-columns:24px minmax(0,1fr) auto;align-items:center;gap:8px;min-height:38px;padding:6px 8px;border:0;border-radius:4px;background:transparent;color:var(--ink);text-align:left;cursor:pointer}
+.file-row:hover{background:#ece5d6}
+.file-row.selected{background:#dbe7e7}
+.file-row.selected:focus-visible{outline-color:var(--accent)}
+.file-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:.83rem}
+.file-size{color:var(--muted);font-family:var(--mono);font-size:.64rem}
+.folder-arrow{color:var(--muted);font-size:.75rem}
+.file-icon{position:relative;display:block;width:18px;height:15px;justify-self:center}
+.file-icon.folder{border-radius:2px;background:var(--blue)}
+.file-icon.folder::before{content:"";position:absolute;left:0;top:-4px;width:8px;height:5px;border-radius:2px 2px 0 0;background:var(--blue)}
+.file-icon.document{height:19px;border:1px solid #a3acab;border-radius:2px;background:#fff}
+.file-icon.document::after{content:attr(data-ext);position:absolute;left:2px;right:2px;bottom:2px;color:#68777a;font-family:var(--mono);font-size:5px;line-height:1;text-align:center}
+.column-message{padding:32px 20px;color:var(--muted);font-size:.82rem;text-align:center}
+.preview-body{padding:18px;color:var(--body);font-size:.82rem;overflow-wrap:anywhere}
+.preview-body .markdown{padding:0;font-size:.84rem}
+.preview-meta{margin:0 0 18px;padding-bottom:14px;border-bottom:1px solid var(--line-light);color:var(--muted);font-family:var(--mono);font-size:.7rem}
+.preview-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.preview-actions a{display:inline-block;padding:7px 11px;border:1px solid var(--line);color:var(--accent);font-size:.76rem;transition:border-color .2s,color .2s}
+.preview-actions a:hover{border-color:var(--orange);color:var(--orange-deep)}
+.preview-image{display:block;max-width:100%;height:auto;border:1px solid var(--line)}
+.finder-status{display:flex;justify-content:space-between;gap:16px;padding:8px 15px;border-top:1px solid rgba(30,43,47,.12);background:#e9e2d5;color:var(--muted);font-size:.68rem}
+.error{color:#a24d3b!important}
+:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
+@media (max-width:1080px){
+  .workspace{grid-template-columns:1fr}
+  .experience{max-width:780px}
+  .finder-columns{max-height:none;min-height:430px}
+}
+@media (max-width:640px){
+  .topbar-in{padding:0 18px;gap:14px}
+  .repo{display:none}
+  .source-link{margin-left:auto}
+  .page{padding:30px 18px 40px}
+  .course-heading{display:block}
+  .course-heading>p{margin-top:12px;text-align:left}
+  .workspace{gap:22px}
+  .markdown{padding:22px 20px 28px}
+  .note-heading{padding:18px 20px 14px}
+  .finder-toolbar{grid-template-columns:auto 1fr;gap:16px}
+  .finder-title{text-align:center}
+  .file-count{display:none}
+  .finder-column{flex-basis:230px}
+  .finder-column.preview{flex-basis:290px}
+  .finder-status{display:block}
+  .finder-status span:last-child{display:none}
+}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="topbar-in">
+  <a class="back-link" href="index.html#courses">← 课程索引</a>
+  <span class="repo">ZJU-ISEE-IE</span>
+  <a class="source-link" id="source-link" href="https://github.com/Ancher-puppet/ZJU-ISEE-IE">在 GitHub 打开 ↗</a>
+</div></header>
+<main class="page">
+  <section class="course-heading">
+    <div><p class="term" id="term">课程档案</p><h1 id="course-name">正在读取课程…</h1></div>
+    <p>左边是上完课后的课程记录，右边是这门课实际保存的文件。</p>
+  </section>
+  <div class="workspace">
+    <article class="experience">
+      <div class="note-heading"><span>课程记录</span><span>COURSE NOTES</span></div>
+      <div class="markdown" id="experience-content"><p>正在读取课程记录…</p></div>
+    </article>
+    <section class="finder" aria-label="课程文件浏览器">
+      <div class="finder-toolbar">
+        <div class="window-controls" aria-hidden="true"><i></i><i></i><i></i></div>
+        <strong class="finder-title" id="finder-title">课程文件</strong>
+        <span class="file-count" id="file-count"></span>
+      </div>
+      <div class="finder-columns" id="finder-columns"></div>
+      <div class="finder-status"><span>目录来自 GitHub，点击文件夹继续展开</span><span>公开 API · 按需读取</span></div>
+    </section>
+  </div>
+</main>
+<noscript><p class="page">课程浏览页需要 JavaScript。也可以直接在 GitHub 仓库中查看文件。</p></noscript>
+<script>
+(function () {
+  var owner = 'Ancher-puppet';
+  var repository = 'ZJU-ISEE-IE';
+  var branch = 'main';
+  var apiRoot = 'https://api.github.com/repos/' + owner + '/' + repository + '/contents/';
+  var githubRoot = 'https://github.com/' + owner + '/' + repository;
+  var columns = document.getElementById('finder-columns');
+  var allowedTerms = ['大一上', '大一下', '大二上', '大二下', '大三上', '大三下'];
+  var params = new URLSearchParams(location.search);
+  var course = params.get('course') || '';
+  var parts = course.split('/');
+
+  if (parts.length !== 2 || !allowedTerms.includes(parts[0]) || parts.includes('..') || !parts[1]) {
+    document.getElementById('course-name').textContent = '没有找到这门课';
+    document.getElementById('experience-content').textContent = '请回到课程索引重新选择。';
+    columns.innerHTML = '<p class="column-message">课程地址不完整。</p>';
+    return;
+  }
+
+  var courseName = parts[1];
+  document.getElementById('course-name').textContent = courseName;
+  document.getElementById('term').textContent = parts[0] + ' · 课程档案';
+  document.getElementById('finder-title').textContent = courseName;
+  document.title = courseName + ' · 课程档案';
+  document.getElementById('source-link').href = githubRoot + '/tree/' + branch + '/' + encodePath(course);
+
+  function encodePath(path) {
+    return path.split('/').map(encodeURIComponent).join('/');
+  }
+
+  function escapeHtml(value) {
+    return String(value).replace(/[&<>"']/g, function (character) {
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[character];
+    });
+  }
+
+  function safeLink(value) {
+    var url = value.replace(/&amp;/g, '&');
+    return /^https?:\/\//i.test(url) ? url : '';
+  }
+
+  function inlineMarkdown(value) {
+    var text = escapeHtml(value);
+    text = text.replace(/`([^`]+)`/g, '<code>$1</code>');
+    text = text.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+    text = text.replace(/\[([^\]]+)\]\(([^\s)]+)\)/g, function (match, label, url) {
+      var href = safeLink(url);
+      return href ? '<a href="' + escapeHtml(href) + '" target="_blank" rel="noopener noreferrer">' + label + '</a>' : label;
+    });
+    return text.replace(/&lt;br\s*\/?&gt;/gi, '<br>');
+  }
+
+  function renderMarkdown(markdown) {
+    var lines = markdown.replace(/^#\s+.+\r?\n+/, '').replace(/\r/g, '').split('\n');
+    var html = '';
+    var index = 0;
+    while (index < lines.length) {
+      var line = lines[index];
+      if (!line.trim()) { index += 1; continue; }
+      var fence = line.match(/^```(.*)$/);
+      if (fence) {
+        var code = [];
+        index += 1;
+        while (index < lines.length && !/^```/.test(lines[index])) { code.push(lines[index]); index += 1; }
+        index += 1;
+        html += '<pre><code>' + escapeHtml(code.join('\n')) + '</code></pre>';
+        continue;
+      }
+      var heading = line.match(/^(#{1,3})\s+(.+)$/);
+      if (heading) {
+        var level = heading[1].length;
+        html += '<h' + level + '>' + inlineMarkdown(heading[2]) + '</h' + level + '>';
+        index += 1;
+        continue;
+      }
+      if (/^>\s?/.test(line)) {
+        var quote = [];
+        while (index < lines.length && /^>\s?/.test(lines[index])) {
+          quote.push(lines[index].replace(/^>\s?/, ''));
+          index += 1;
+        }
+        html += '<blockquote><p>' + inlineMarkdown(quote.join('<br>')).replace(/&lt;br&gt;/g, '<br>') + '</p></blockquote>';
+        continue;
+      }
+      if (/^\s*[-*]\s+/.test(line)) {
+        var items = [];
+        while (index < lines.length && /^\s*[-*]\s+/.test(lines[index])) {
+          items.push(lines[index].replace(/^\s*[-*]\s+/, ''));
+          index += 1;
+        }
+        html += '<ul>' + items.map(function (item) { return '<li>' + inlineMarkdown(item) + '</li>'; }).join('') + '</ul>';
+        continue;
+      }
+      if (/^\s*\d+\.\s+/.test(line)) {
+        var ordered = [];
+        while (index < lines.length && /^\s*\d+\.\s+/.test(lines[index])) {
+          ordered.push(lines[index].replace(/^\s*\d+\.\s+/, ''));
+          index += 1;
+        }
+        html += '<ol>' + ordered.map(function (item) { return '<li>' + inlineMarkdown(item) + '</li>'; }).join('') + '</ol>';
+        continue;
+      }
+      if (line.includes('|') && index + 1 < lines.length && /^\|?[\s:|-]+\|?$/.test(lines[index + 1]) && lines[index + 1].includes('-')) {
+        var headers = line.replace(/^\||\|$/g, '').split('|').map(function (cell) { return cell.trim(); });
+        index += 2;
+        var rows = [];
+        while (index < lines.length && lines[index].includes('|') && lines[index].trim()) {
+          rows.push(lines[index].replace(/^\||\|$/g, '').split('|').map(function (cell) { return cell.trim(); }));
+          index += 1;
+        }
+        html += '<table><thead><tr>' + headers.map(function (cell) { return '<th>' + inlineMarkdown(cell) + '</th>'; }).join('') + '</tr></thead><tbody>';
+        html += rows.map(function (row) { return '<tr>' + row.map(function (cell) { return '<td>' + inlineMarkdown(cell) + '</td>'; }).join('') + '</tr>'; }).join('') + '</tbody></table>';
+        continue;
+      }
+      var paragraph = [line];
+      index += 1;
+      while (index < lines.length && lines[index].trim() && !/^(#{1,3})\s+|^>\s?|^\s*[-*]\s+|^\s*\d+\.\s+|^```/.test(lines[index])) {
+        paragraph.push(lines[index]);
+        index += 1;
+      }
+      html += '<p>' + inlineMarkdown(paragraph.join('\n')).replace(/\n/g, '<br>') + '</p>';
+    }
+    return html;
+  }
+
+  async function fetchContent(path) {
+    var response = await fetch(apiRoot + encodePath(path) + '?ref=' + encodeURIComponent(branch), {headers:{'Accept':'application/vnd.github+json'}});
+    if (response.status === 403) throw new Error('GitHub 暂时限制了读取次数，请稍后再试，或从右上角打开原仓库。');
+    if (response.status === 404) throw new Error('没有找到这个文件或目录。');
+    if (!response.ok) throw new Error('读取失败，请稍后重试。');
+    return response.json();
+  }
+
+  function decodeContent(data) {
+    var binary = atob(data.content.replace(/\n/g, ''));
+    var bytes = Uint8Array.from(binary, function (character) { return character.charCodeAt(0); });
+    return new TextDecoder().decode(bytes);
+  }
+
+  function formatSize(bytes) {
+    if (bytes < 1024) return bytes + ' B';
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(bytes < 10240 ? 1 : 0) + ' KB';
+    return (bytes / 1024 / 1024).toFixed(1) + ' MB';
+  }
+
+  function extension(name) {
+    var pieces = name.split('.');
+    return pieces.length > 1 ? pieces.pop().slice(0, 5).toUpperCase() : '';
+  }
+
+  function makeColumn(title, preview) {
+    var column = document.createElement('section');
+    column.className = 'finder-column' + (preview ? ' preview' : '');
+    var label = document.createElement('h2');
+    label.className = 'column-label';
+    label.textContent = title;
+    column.appendChild(label);
+    return column;
+  }
+
+  function trimColumns(index) {
+    while (columns.children.length > index + 1) columns.removeChild(columns.lastElementChild);
+  }
+
+  function selectRow(column, row) {
+    column.querySelectorAll('.file-row').forEach(function (item) { item.classList.remove('selected'); });
+    row.classList.add('selected');
+  }
+
+  function showError(column, error) {
+    var message = document.createElement('p');
+    message.className = 'column-message error';
+    message.textContent = error.message;
+    column.appendChild(message);
+  }
+
+  function scrollToEnd() {
+    requestAnimationFrame(function () { columns.scrollTo({left:columns.scrollWidth,behavior:'smooth'}); });
+  }
+
+  function openFile(item, columnIndex, row) {
+    selectRow(columns.children[columnIndex], row);
+    trimColumns(columnIndex);
+    var preview = makeColumn(item.name, true);
+    columns.appendChild(preview);
+    var body = document.createElement('div');
+    body.className = 'preview-body';
+    preview.appendChild(body);
+    var meta = document.createElement('p');
+    meta.className = 'preview-meta';
+    meta.textContent = formatSize(item.size) + (extension(item.name) ? ' · ' + extension(item.name) : '');
+    body.appendChild(meta);
+    var ext = extension(item.name).toLowerCase();
+    if (['md','txt','c','h','cpp','py','js','json','html','css','csv'].includes(ext)) {
+      var loading = document.createElement('p');
+      loading.textContent = '正在读取文件…';
+      body.appendChild(loading);
+      fetchContent(item.path).then(function (data) {
+        loading.remove();
+        var content = decodeContent(data);
+        if (ext === 'md') {
+          var markdown = document.createElement('div');
+          markdown.className = 'markdown';
+          markdown.innerHTML = renderMarkdown(content);
+          body.insertBefore(markdown, meta.nextSibling);
+        } else {
+          var pre = document.createElement('pre');
+          pre.textContent = content;
+          body.insertBefore(pre, meta.nextSibling);
+        }
+      }).catch(function (error) { showError(body, error); });
+    } else if (['png','jpg','jpeg','gif','webp','svg'].includes(ext) && item.download_url) {
+      var image = document.createElement('img');
+      image.className = 'preview-image';
+      image.src = item.download_url;
+      image.alt = item.name;
+      body.appendChild(image);
+    } else {
+      var description = document.createElement('p');
+      description.textContent = '这种格式请打开原文件查看。';
+      body.appendChild(description);
+    }
+    var actions = document.createElement('div');
+    actions.className = 'preview-actions';
+    var view = document.createElement('a');
+    view.href = item.html_url;
+    view.target = '_blank';
+    view.rel = 'noopener noreferrer';
+    view.textContent = '在 GitHub 查看 ↗';
+    actions.appendChild(view);
+    if (item.download_url) {
+      var download = document.createElement('a');
+      download.href = item.download_url;
+      download.target = '_blank';
+      download.rel = 'noopener noreferrer';
+      download.textContent = '打开原文件 ↗';
+      actions.appendChild(download);
+    }
+    body.appendChild(actions);
+    scrollToEnd();
+  }
+
+  async function openFolder(path, columnIndex, row) {
+    selectRow(columns.children[columnIndex], row);
+    trimColumns(columnIndex);
+    var next = makeColumn(path.split('/').pop(), false);
+    columns.appendChild(next);
+    var loading = document.createElement('p');
+    loading.className = 'column-message';
+    loading.textContent = '正在读取目录…';
+    next.appendChild(loading);
+    scrollToEnd();
+    try {
+      var items = await fetchContent(path);
+      loading.remove();
+      renderItems(next, items, columnIndex + 1);
+    } catch (error) {
+      loading.remove();
+      showError(next, error);
+    }
+  }
+
+  function renderItems(column, items, columnIndex) {
+    var list = document.createElement('ul');
+    list.className = 'file-list';
+    items.slice().sort(function (a, b) {
+      if (a.type !== b.type) return a.type === 'dir' ? -1 : 1;
+      return a.name.localeCompare(b.name, 'zh-CN', {numeric:true});
+    }).forEach(function (item) {
+      var entry = document.createElement('li');
+      var button = document.createElement('button');
+      button.className = 'file-row';
+      button.type = 'button';
+      button.title = item.name;
+      var icon = document.createElement('span');
+      icon.className = 'file-icon ' + (item.type === 'dir' ? 'folder' : 'document');
+      icon.setAttribute('aria-hidden', 'true');
+      if (item.type !== 'dir') icon.dataset.ext = extension(item.name);
+      var name = document.createElement('span');
+      name.className = 'file-name';
+      name.textContent = item.name;
+      var tail = document.createElement('span');
+      if (item.type === 'dir') {
+        tail.className = 'folder-arrow';
+        tail.textContent = '›';
+      } else {
+        tail.className = 'file-size';
+        tail.textContent = formatSize(item.size);
+      }
+      button.append(icon, name, tail);
+      button.addEventListener('click', function () {
+        if (item.type === 'dir') openFolder(item.path, columnIndex, button);
+        else openFile(item, columnIndex, button);
+      });
+      entry.appendChild(button);
+      list.appendChild(entry);
+    });
+    column.appendChild(list);
+    if (!items.length) {
+      var empty = document.createElement('p');
+      empty.className = 'column-message';
+      empty.textContent = '这个文件夹是空的。';
+      column.appendChild(empty);
+    }
+  }
+
+  async function loadCourse() {
+    var root = makeColumn(courseName, false);
+    columns.appendChild(root);
+    var loading = document.createElement('p');
+    loading.className = 'column-message';
+    loading.textContent = '正在读取目录…';
+    root.appendChild(loading);
+    try {
+      var items = await fetchContent(course);
+      loading.remove();
+      renderItems(root, items, 0);
+      var directories = items.filter(function (item) { return item.type === 'dir'; }).length;
+      document.getElementById('file-count').textContent = (items.length - directories) + ' 个文件 · ' + directories + ' 个文件夹';
+    } catch (error) {
+      loading.remove();
+      showError(root, error);
+    }
+  }
+
+  fetchContent(course + '/课程体验.md').then(function (data) {
+    document.getElementById('experience-content').innerHTML = renderMarkdown(decodeContent(data));
+  }).catch(function (error) {
+    var content = document.getElementById('experience-content');
+    content.textContent = error.message;
+    content.classList.add('error');
+  });
+
+  loadCourse();
+})();
+</script>
+</body>
+</html>

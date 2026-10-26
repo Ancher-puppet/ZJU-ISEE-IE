@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="420" viewBox="0 0 1280 420">
+  <defs>
+    <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
+      <path d="M80 0H0V80" fill="none" stroke="#1e2b2f" stroke-opacity=".07" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="sun" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e2906d"/>
+      <stop offset="1" stop-color="#d97757"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="420" fill="#f3efe6"/>
+  <rect width="1280" height="420" fill="url(#grid)"/>
+  <rect x="0" y="0" width="1280" height="420" fill="#d97757" opacity=".04"/>
+
+  <g transform="translate(706 8) scale(.66)">
+    <g stroke="#255a6b" stroke-opacity=".18" stroke-width="1.3" stroke-dasharray="2 8" fill="none">
+      <circle cx="600" cy="150" r="152"/>
+      <circle cx="600" cy="150" r="198"/>
+      <circle cx="600" cy="150" r="244"/>
+    </g>
+    <g stroke="#b95837" stroke-opacity=".5" stroke-width="1.5" stroke-linecap="round">
+      <path d="M712 96h20M700 120h32M712 144h20"/>
+    </g>
+    <circle cx="600" cy="150" r="96" fill="url(#sun)" fill-opacity=".92"/>
+    <g stroke="#1d4a58" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+      <path d="M84 566h592M104 548h552M124 530h512M144 512h472"/>
+      <path d="M162 512V300h436v212"/>
+      <path d="M136 300 380 198l244 102"/>
+      <path d="M176 300 380 215l204 85"/>
+      <path d="M380 198v-20"/><circle cx="380" cy="173" r="4"/>
+      <path d="M204 324v176M240 324v176M276 324v176M312 324v176M448 324v176M484 324v176M520 324v176M556 324v176"/>
+      <path d="M196 324h16M232 324h16M268 324h16M304 324h16M440 324h16M476 324h16M512 324h16M548 324h16"/>
+      <path d="M196 500h16M232 500h16M268 500h16M304 500h16M440 500h16M476 500h16M512 500h16M548 500h16"/>
+      <path d="M344 512V420a36 36 0 0 1 72 0v92"/>
+      <path d="M358 512v-90a22 22 0 0 1 44 0v90"/>
+      <path d="M380 424v88"/>
+      <path d="M332 512v18M428 512v18"/>
+      <path d="M206 370h40v34h-40zM514 370h40v34h-40z" stroke-opacity=".4"/>
+    </g>
+    <text x="380" y="364" text-anchor="middle" font-family="Georgia,serif" font-size="15" letter-spacing="7" fill="#1d4a58" fill-opacity=".5">1897</text>
+    <path d="M60 578h640" stroke="#d97757" stroke-opacity=".45" stroke-dasharray="1 9" stroke-width="1.5"/>
+    <path d="M706 78c8-7 14-7 22 0M724 58c6-5 11-5 17 0" stroke="#1d4a58" stroke-width="1.5" stroke-linecap="round" stroke-opacity=".5" fill="none"/>
+  </g>
+
+  <text x="1208" y="30" text-anchor="end" font-family="SFMono-Regular,Menlo,monospace" font-size="14" letter-spacing="3" fill="#6d746f">ZJU-ISEE-IE / 2023—2026</text>
+
+  <text x="72" y="94" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="21" font-weight="600" letter-spacing="3" fill="#b95837">浙江大学 · 信息工程 2023 级</text>
+
+  <text x="68" y="184" font-family="Songti SC,STSong,Georgia,serif" font-size="76" font-weight="600" letter-spacing="-2" fill="#1e2b2f">信息工程课程档案</text>
+
+  <text x="72" y="232" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="23" fill="#3f4c4e">六个学期的记录、复习资料与课程项目</text>
+
+  <g font-family="PingFang SC,Hiragino Sans GB,sans-serif" fill="#3f4c4e">
+    <text x="72" y="308" font-family="Georgia,serif" font-size="38" fill="#1e2b2f">61</text>
+    <text x="124" y="306" font-size="17">门课</text>
+    <text x="212" y="308" font-family="Georgia,serif" font-size="38" fill="#1e2b2f">142.0</text>
+    <text x="309" y="306" font-size="17">学分</text>
+    <text x="397" y="308" font-family="Georgia,serif" font-size="38" fill="#1e2b2f">6</text>
+    <text x="424" y="306" font-size="17">个学期</text>
+  </g>
+
+  <g>
+    <rect x="72" y="336" width="236" height="54" fill="#1e2b2f"/>
+    <text x="94" y="371" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="20" font-weight="600" fill="#fbf8f1">进入课程站</text>
+    <path d="M228 363h32m-9-9 9 9-9 9" fill="none" stroke="#d97757" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <g transform="translate(338 330)">
+    <rect width="72" height="72" fill="none" stroke="#b95837" stroke-opacity=".55"/>
+    <rect x="6" y="6" width="60" height="60" fill="none" stroke="#b95837" stroke-opacity=".2"/>
+    <text x="36" y="33" text-anchor="middle" font-family="Songti SC,STSong,serif" font-size="17" fill="#b95837">求是</text>
+    <text x="36" y="54" text-anchor="middle" font-family="Songti SC,STSong,serif" font-size="17" fill="#b95837">创新</text>
+  </g>
+
+  <path d="M72 416h1136" stroke="#1e2b2f" stroke-opacity=".12"/>
+</svg>
