@@ -727,7 +727,7 @@ document.documentElement.classList.add('js');
   var busy = false;
   var current = -1;
   var exitMs = 150;
-  var settleMs = 470;
+  var settleMs = 430;
 
   function pad(value) { return value < 10 ? '0' + value : String(value); }
 
@@ -890,7 +890,7 @@ document.documentElement.classList.add('js');
     }
     var leaving = activeView();
     var from = stacks.offsetHeight;
-    stacks.style.transition = 'height .46s var(--ease)';
+    stacks.style.transition = 'height .36s var(--ease)';
     stacks.style.height = from + 'px';
     if (leaving) leaving.classList.add('is-leaving');
 
@@ -898,18 +898,44 @@ document.documentElement.classList.add('js');
       if (leaving) leaving.classList.remove('is-leaving');
       update();
       var entering = activeView();
-      if (entering) entering.classList.add('is-entering');
+      var fitted = false;
+      if (entering) {
+        var headerHeight = stacks.querySelector('.stacks-top').offsetHeight;
+        var fit = (from - headerHeight) / Math.max(1, entering.offsetHeight);
+        if (fit < 0.999) {
+          fitted = true;
+          fit = Math.max(0.3, fit);
+          entering.style.transformOrigin = '50% 0';
+          entering.style.transition = 'none';
+          entering.style.transform = 'scale(' + fit.toFixed(4) + ')';
+          entering.style.willChange = 'transform';
+        } else {
+          entering.classList.add('is-entering');
+        }
+      }
       stacks.style.height = 'auto';
       var to = stacks.offsetHeight;
       stacks.style.height = from + 'px';
       void stacks.offsetHeight;
       setTimeout(function () {
         stacks.style.height = to + 'px';
-        if (entering) entering.classList.remove('is-entering');
+        if (fitted) {
+          entering.style.transition = 'transform .36s var(--ease)';
+          void entering.offsetHeight;
+          entering.style.transform = 'scale(1)';
+        } else if (entering) {
+          entering.classList.remove('is-entering');
+        }
         alignCabinet();
         setTimeout(function () {
           stacks.style.height = '';
           stacks.style.transition = '';
+          if (entering) {
+            entering.style.transition = '';
+            entering.style.transform = '';
+            entering.style.transformOrigin = '';
+            entering.style.willChange = '';
+          }
           busy = false;
         }, settleMs);
       }, 30);
