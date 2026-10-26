@@ -176,6 +176,10 @@ h1{margin:0;font-family:var(--serif);font-size:clamp(2rem,4vw,3.35rem);line-heig
     return path.split('/').map(encodeURIComponent).join('/');
   }
 
+  function displayName(value) {
+    return value === '课程体验.md' ? '课程记录.md' : value;
+  }
+
   function escapeHtml(value) {
     return String(value).replace(/[&<>"']/g, function (character) {
       return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[character];
@@ -329,7 +333,7 @@ h1{margin:0;font-family:var(--serif);font-size:clamp(2rem,4vw,3.35rem);line-heig
   function openFile(item, columnIndex, row) {
     selectRow(columns.children[columnIndex], row);
     trimColumns(columnIndex);
-    var preview = makeColumn(item.name, true);
+    var preview = makeColumn(displayName(item.name), true);
     columns.appendChild(preview);
     var body = document.createElement('div');
     body.className = 'preview-body';
@@ -419,14 +423,14 @@ h1{margin:0;font-family:var(--serif);font-size:clamp(2rem,4vw,3.35rem);line-heig
       var button = document.createElement('button');
       button.className = 'file-row';
       button.type = 'button';
-      button.title = item.name;
+      button.title = displayName(item.name);
       var icon = document.createElement('span');
       icon.className = 'file-icon ' + (item.type === 'dir' ? 'folder' : 'document');
       icon.setAttribute('aria-hidden', 'true');
       if (item.type !== 'dir') icon.dataset.ext = extension(item.name);
       var name = document.createElement('span');
       name.className = 'file-name';
-      name.textContent = item.name;
+      name.textContent = displayName(item.name);
       var tail = document.createElement('span');
       if (item.type === 'dir') {
         tail.className = 'folder-arrow';
