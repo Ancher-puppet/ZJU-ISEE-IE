@@ -67,10 +67,9 @@ img,svg{display:block}
 .hero::before{content:"";position:absolute;inset:0;z-index:-3;opacity:.42;background-image:linear-gradient(var(--line-light) 1px,transparent 1px),linear-gradient(90deg,var(--line-light) 1px,transparent 1px);background-size:88px 88px;mask-image:linear-gradient(to bottom,transparent 2%,#000 42%,transparent 92%)}
 .hero-art{position:absolute;right:-10px;bottom:150px;z-index:-1;width:min(640px,46vw);opacity:.84;transform:translate3d(0,var(--hero-shift,0),0) scale(var(--hero-scale,1));transform-origin:50% 100%;will-change:transform}
 .hero-art svg{width:100%;height:auto;overflow:visible}
-.hero-lyrics{position:absolute;inset:0;z-index:1;overflow:hidden;pointer-events:none;mix-blend-mode:multiply;font-family:"Kaiti SC","STKaiti","KaiTi",var(--serif);color:var(--blue)}
-.lyric{position:absolute;left:calc(var(--x) * 1%);top:calc(var(--y) * 1%);white-space:nowrap;font-size:clamp(13px,calc(var(--s) * 1vw),32px);letter-spacing:.22em;line-height:1;opacity:var(--o);animation:lyric-in 2.6s var(--ease) both;animation-delay:var(--dly)}
+.hero-lyrics{position:absolute;inset:0;z-index:1;overflow:hidden;pointer-events:none;mix-blend-mode:multiply;font-family:"Xingkai SC","STXingkai","华文行楷","BiauKai","Kaiti SC","STKaiti","KaiTi",var(--serif);--foil:linear-gradient(102deg,#6f4a0a 0%,#c08c1e 15%,#f0d495 30%,#a06f16 45%,#ddb96a 60%,#7d5610 74%,#cb9c34 88%,#96690f 100%);--rubbing:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='r'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23r)' opacity='.15'/%3E%3C/svg%3E")}
+.lyric{position:absolute;left:calc(var(--x) * 1%);top:calc(var(--y) * 1%);white-space:nowrap;font-size:clamp(16px,calc(var(--s) * 1vw),34px);letter-spacing:.16em;line-height:1;opacity:var(--o);color:transparent;background-image:var(--rubbing),var(--foil);background-size:110px 110px,100% 100%;background-blend-mode:soft-light,normal;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 .008em .02em rgba(122,88,34,.22);transform:rotate(var(--rot,0deg));animation:lyric-in 2.6s var(--ease) both;animation-delay:var(--dly)}
 .lyric span{display:inline-block;animation:lyric-drift var(--dur) ease-in-out infinite;animation-delay:calc(var(--dly) * .4)}
-.lyric.is-warm{color:var(--orange-deep)}
 @keyframes lyric-in{from{opacity:0}to{opacity:var(--o)}}
 @keyframes lyric-drift{0%,100%{transform:translate3d(0,0,0);opacity:.8}50%{transform:translate3d(var(--dx,1.6vw),-.55vw,0);opacity:1}}
 .hero-in{position:relative;display:block;min-height:548px}
@@ -388,14 +387,18 @@ a:focus-visible,input:focus-visible,button:focus-visible{outline:2px solid var(-
 <main id="top">
   <section class="hero">
     <div class="hero-lyrics" aria-hidden="true">
-      <p class="lyric" style="--x:3.4;--y:11.4;--s:2.1;--o:.48;--dur:44s;--dly:.4s;--dx:1.8vw"><span>大不自多　海纳江河</span></p>
-      <p class="lyric" style="--x:46;--y:10.2;--s:1.04;--o:.32;--dur:40s;--dly:.9s;--dx:-1.4vw"><span>惟学无际　际于天地</span></p>
-      <p class="lyric is-warm" style="--x:60.5;--y:20.6;--s:1.24;--o:.32;--dur:36s;--dly:.7s"><span>形上谓道兮　形下谓器</span></p>
-      <p class="lyric" style="--x:70.5;--y:26.2;--s:1.02;--o:.3;--dur:41s;--dly:1.2s;--dx:-1.6vw"><span>礼主别异兮　乐主和同</span></p>
-      <p class="lyric is-warm" style="--x:58.5;--y:35;--s:1.75;--o:.44;--dur:33s;--dly:.6s;--dx:1.5vw"><span>昔言求是　实启尔求真</span></p>
-      <p class="lyric" style="--x:76.5;--y:14.4;--s:1.02;--o:.3;--dur:46s;--dly:1.05s"><span>习坎示教　始见经纶</span></p>
-      <p class="lyric" style="--x:61.5;--y:55.5;--s:1.14;--o:.3;--dur:35s;--dly:.8s;--dx:-1.3vw"><span>无曰已是　无曰遂真</span></p>
-      <p class="lyric is-warm" style="--x:61.5;--y:78.6;--s:1.8;--o:.42;--dur:37s;--dly:.75s;--dx:-1.5vw"><span>树我邦国　天下来同</span></p>
+      <p class="lyric" style="--x:2.6;--y:11.2;--s:2.684;--o:.92;--gp:4;--rot:-0.24deg;--dur:44s;--dly:.4s;--dx:1.8vw"><span>大不自多　海納江河</span></p>
+      <p class="lyric" style="--x:45;--y:9.4;--s:1.22;--o:.92;--gp:26;--rot:0.32deg;--dur:40s;--dly:.9s;--dx:-1.4vw"><span>惟學無際　際於天地</span></p>
+      <p class="lyric" style="--x:72;--y:13.6;--s:1.269;--o:.92;--gp:62;--rot:-0.14deg;--dur:46s;--dly:1.05s"><span>習坎示教　始見經綸</span></p>
+      <p class="lyric" style="--x:59;--y:19.6;--s:1.61;--o:.92;--gp:14;--rot:0.17deg;--dur:36s;--dly:.7s"><span>形上謂道兮　形下謂器</span></p>
+      <p class="lyric" style="--x:75;--y:24.6;--s:1.22;--o:.92;--gp:78;--rot:-0.32deg;--dur:41s;--dly:1.2s;--dx:-1.6vw"><span>禮主別異兮　樂主和同</span></p>
+      <p class="lyric" style="--x:57;--y:30.8;--s:2.22;--o:.92;--gp:36;--rot:-0.17deg;--dur:33s;--dly:.6s;--dx:1.5vw"><span>昔言求是　實啟爾求真</span></p>
+      <p class="lyric" style="--x:58;--y:37.2;--s:1.293;--o:.92;--gp:58;--rot:0.28deg;--dur:35s;--dly:.8s;--dx:-1.3vw"><span>無曰已是　無曰遂真</span></p>
+      <p class="lyric" style="--x:59;--y:42.6;--s:1.415;--o:.92;--gp:12;--rot:-0.21deg;--dur:43s;--dly:1.35s"><span>靡革匪因　靡故匪新</span></p>
+      <p class="lyric" style="--x:79;--y:48.2;--s:1.22;--o:.92;--gp:70;--rot:0.14deg;--dur:40s;--dly:1.1s;--dx:-1vw"><span>何以新之　開物前民</span></p>
+      <p class="lyric" style="--x:62;--y:54.2;--s:1.269;--o:.92;--gp:48;--rot:-0.28deg;--dur:45s;--dly:1.45s;--dx:1.2vw"><span>念哉典學　思睿觀通</span></p>
+      <p class="lyric" style="--x:76;--y:60.6;--s:1.196;--o:.92;--gp:20;--rot:0.24deg;--dur:42s;--dly:1.25s"><span>嗟爾髦士　尚其有聞</span></p>
+      <p class="lyric" style="--x:61;--y:78.8;--s:2.196;--o:.92;--gp:6;--rot:-0.14deg;--dur:37s;--dly:.75s;--dx:-1.5vw"><span>樹我邦國　天下來同</span></p>
     </div>
 
     <div class="hero-art" aria-hidden="true">
