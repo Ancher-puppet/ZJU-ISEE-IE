@@ -60,13 +60,13 @@
     <text x="424" y="306" font-size="17">个学期</text>
   </g>
 
-  <g transform="translate(72 336) scale(1.12) translate(-72 -336)">
+  <g transform="translate(72 336) scale(1.18) translate(-72 -336)">
     <rect x="72" y="336" width="236" height="54" fill="#1e2b2f"/>
     <text x="94" y="371" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="20" font-weight="600" fill="#fbf8f1">进入课程站</text>
     <path d="M228 363h32m-9-9 9 9-9 9" fill="none" stroke="#d97757" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 
-  <g transform="translate(356 330)">
+  <g transform="translate(380 330)">
     <rect width="72" height="72" fill="none" stroke="#b95837" stroke-opacity=".55"/>
     <rect x="6" y="6" width="60" height="60" fill="none" stroke="#b95837" stroke-opacity=".2"/>
     <text x="36" y="33" text-anchor="middle" font-family="Songti SC,STSong,serif" font-size="17" fill="#b95837">求是</text>

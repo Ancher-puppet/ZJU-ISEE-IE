@@ -1,6 +1,6 @@
 <div align="center">
 
-<a href="https://ancher-puppet.github.io/ZJU-ISEE-IE/"><img src="assets/readme-hero.png?v=2" alt="信息工程课程档案：浙江大学信息工程 2023 级，61 门课，142.0 学分" width="100%"></a>
+<a href="https://ancher-puppet.github.io/ZJU-ISEE-IE/"><img src="assets/readme-hero.png?v=3" alt="信息工程课程档案：浙江大学信息工程 2023 级，61 门课，142.0 学分" width="100%"></a>
 
 **🎓 61 门课 · ⚡ 142.0 学分 · 🗓️ 6 个学期**，左边读记录，右边翻文件。
 
