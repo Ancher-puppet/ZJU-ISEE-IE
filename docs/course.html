@@ -4,7 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>课程档案 · ZJU-ISEE-IE</title>
-<meta name="description" content="阅读课程记录，并按目录浏览课程资料。">
+<meta name="description" id="meta-description" content="阅读课程记录，并按目录浏览课程资料。">
+<meta property="og:site_name" content="信息工程课程档案">
+<meta property="og:type" content="article">
+<meta property="og:title" id="og-title" content="课程档案 · 浙江大学信息工程">
+<meta property="og:description" id="og-description" content="每门课的记录、复习资料与课程项目，按学期归档。">
+<meta property="og:url" id="og-url" content="https://ancher-puppet.github.io/ZJU-ISEE-IE/">
+<meta name="twitter:card" content="summary">
+<link rel="canonical" id="canonical-link" href="https://ancher-puppet.github.io/ZJU-ISEE-IE/course.html">
 <style>
 :root{
   --ink:#1e2b2f;--body:#3f4c4e;--muted:#6d746f;--paper:#f3efe6;--white:#fbf8f1;
@@ -141,7 +148,7 @@ h1{margin:0;font-family:var(--serif);font-size:clamp(2rem,4vw,3.35rem);line-heig
         <span class="file-count" id="file-count"></span>
       </div>
       <div class="finder-columns" id="finder-columns"></div>
-      <div class="finder-status"><span>目录来自 GitHub，点击文件夹继续展开</span><span>公开 API · 按需读取</span></div>
+      <div class="finder-status"><span>目录来自仓库清单，点击文件夹继续展开</span><span>静态清单 · 按需读取</span></div>
     </section>
   </div>
 </main>
@@ -152,7 +159,12 @@ h1{margin:0;font-family:var(--serif);font-size:clamp(2rem,4vw,3.35rem);line-heig
   var repository = 'ZJU-ISEE-IE';
   var branch = 'main';
   var apiRoot = 'https://api.github.com/repos/' + owner + '/' + repository + '/contents/';
+  var rawRoot = 'https://raw.githubusercontent.com/' + owner + '/' + repository + '/' + branch + '/';
   var githubRoot = 'https://github.com/' + owner + '/' + repository;
+  var siteRoot = 'https://ancher-puppet.github.io/' + repository;
+  var manifestUrl = 'data/courses.json';
+  var tree = null;
+  var entry = null;
   var columns = document.getElementById('finder-columns');
   var allowedTerms = ['大一上', '大一下', '大二上', '大二下', '大三上', '大三下'];
   var params = new URLSearchParams(location.search);
@@ -276,12 +288,55 @@ h1{margin:0;font-family:var(--serif);font-size:clamp(2rem,4vw,3.35rem);line-heig
     return html;
   }
 
-  async function fetchContent(path) {
+  async function fetchApi(path) {
     var response = await fetch(apiRoot + encodePath(path) + '?ref=' + encodeURIComponent(branch), {headers:{'Accept':'application/vnd.github+json'}});
     if (response.status === 403) throw new Error('GitHub 暂时限制了读取次数，请稍后再试，或从右上角打开原仓库。');
     if (response.status === 404) throw new Error('没有找到这个文件或目录。');
     if (!response.ok) throw new Error('读取失败，请稍后重试。');
     return response.json();
+  }
+
+  async function fetchText(path) {
+    try {
+      var response = await fetch(rawRoot + encodePath(path), {cache:'no-cache'});
+      if (!response.ok) throw new Error('raw ' + response.status);
+      return await response.text();
+    } catch (error) {
+      return decodeContent(await fetchApi(path));
+    }
+  }
+
+  function itemFor(name, path, type, size) {
+    var isFile = type === 'file';
+    return {
+      name: name, path: path, type: type, size: size,
+      html_url: githubRoot + (isFile ? '/blob/' : '/tree/') + branch + '/' + encodePath(path),
+      download_url: isFile ? rawRoot + encodePath(path) : ''
+    };
+  }
+
+  function buildTree(courseEntry) {
+    var map = {};
+    courseEntry.files.forEach(function (row) {
+      var segments = row[0].split('/');
+      var name = segments.pop();
+      var parent = course;
+      segments.forEach(function (segment) {
+        var path = parent + '/' + segment;
+        if (!map[parent]) map[parent] = [];
+        var seen = map[parent].some(function (item) { return item.path === path; });
+        if (!seen) map[parent].push(itemFor(segment, path, 'dir', 0));
+        parent = path;
+      });
+      if (!map[parent]) map[parent] = [];
+      map[parent].push(itemFor(name, course + '/' + row[0], 'file', row[1]));
+    });
+    return map;
+  }
+
+  async function itemsAt(path) {
+    if (tree) return tree[path] || [];
+    return fetchApi(path);
   }
 
   function decodeContent(data) {
@@ -348,9 +403,8 @@ h1{margin:0;font-family:var(--serif);font-size:clamp(2rem,4vw,3.35rem);line-heig
       var loading = document.createElement('p');
       loading.textContent = '正在读取文件…';
       body.appendChild(loading);
-      fetchContent(item.path).then(function (data) {
+      fetchText(item.path).then(function (content) {
         loading.remove();
-        var content = decodeContent(data);
         if (ext === 'md') {
           var markdown = document.createElement('div');
           markdown.className = 'markdown';
@@ -404,7 +458,7 @@ h1{margin:0;font-family:var(--serif);font-size:clamp(2rem,4vw,3.35rem);line-heig
     next.appendChild(loading);
     scrollToEnd();
     try {
-      var items = await fetchContent(path);
+      var items = await itemsAt(path);
       loading.remove();
       renderItems(next, items, columnIndex + 1);
     } catch (error) {
@@ -465,7 +519,7 @@ h1{margin:0;font-family:var(--serif);font-size:clamp(2rem,4vw,3.35rem);line-heig
     loading.textContent = '正在读取目录…';
     root.appendChild(loading);
     try {
-      var items = await fetchContent(course);
+      var items = await itemsAt(course);
       loading.remove();
       renderItems(root, items, 0);
       var directories = items.filter(function (item) { return item.type === 'dir'; }).length;
@@ -476,15 +530,93 @@ h1{margin:0;font-family:var(--serif);font-size:clamp(2rem,4vw,3.35rem);line-heig
     }
   }
 
-  fetchContent(course + '/课程体验.md').then(function (data) {
-    document.getElementById('experience-content').innerHTML = renderMarkdown(decodeContent(data));
-  }).catch(function (error) {
-    var content = document.getElementById('experience-content');
-    content.textContent = error.message;
-    content.classList.add('error');
-  });
+  function setMeta(id, value) {
+    var element = document.getElementById(id);
+    if (element) element.setAttribute('content', value);
+  }
 
-  loadCourse();
+  function excerpt(text) {
+    var body = text.split('\n').filter(function (line) {
+      var trimmed = line.trim();
+      return trimmed && trimmed.charAt(0) !== '#' && trimmed.charAt(0) !== '>';
+    }).join(' ');
+    return body
+      .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
+      .replace(/[*_`]/g, '')
+      .replace(/\s+/g, ' ')
+      .replace(/^[^\u4e00-\u9fa5A-Za-z0-9]+/, '')
+      .trim()
+      .slice(0, 88);
+  }
+
+  function applyMeta(notes) {
+    var credits = entry && entry.credits ? '，' + entry.credits.toFixed(1) + ' 学分' : '';
+    var summary = notes ? excerpt(notes) : '课程记录与课程资料';
+    var title = courseName + ' · ' + parts[0] + ' · 课程档案';
+    var description = courseName + '（' + parts[0] + credits + '）：' + summary;
+    var url = siteRoot + '/course.html?course=' + encodeURIComponent(course);
+    document.title = title;
+    setMeta('meta-description', description);
+    setMeta('og-title', title);
+    setMeta('og-description', description);
+    setMeta('og-url', url);
+    var canonical = document.getElementById('canonical-link');
+    if (canonical) canonical.href = url;
+    var data = {
+      '@context': 'https://schema.org',
+      '@type': 'Course',
+      'name': courseName,
+      'description': description,
+      'provider': {'@type': 'CollegeOrUniversity', 'name': '浙江大学信息与电子工程学院'}
+    };
+    var structured = document.createElement('script');
+    structured.type = 'application/ld+json';
+    structured.textContent = JSON.stringify(data);
+    document.head.appendChild(structured);
+  }
+
+  function loadNotes() {
+    fetchText(course + '/课程体验.md').then(function (notes) {
+      document.getElementById('experience-content').innerHTML = renderMarkdown(notes);
+      applyMeta(notes);
+    }).catch(function (error) {
+      var content = document.getElementById('experience-content');
+      content.textContent = error.message;
+      content.classList.add('error');
+      applyMeta('');
+    });
+  }
+
+  function loadOrFallback() {
+    loadCourse();
+    if (entry && !entry.notes) {
+      document.getElementById('experience-content').innerHTML =
+        '<p>这门课还没有整理课程记录，右侧的文件可以先翻。</p>';
+      applyMeta('');
+      return;
+    }
+    loadNotes();
+  }
+
+  fetch(manifestUrl, {cache:'no-cache'})
+    .then(function (response) {
+      if (!response.ok) throw new Error('manifest');
+      return response.json();
+    })
+    .then(function (data) {
+      entry = data.courses[course];
+      if (!entry) throw new Error('course');
+      tree = buildTree(entry);
+      if (entry.credits) {
+        document.getElementById('term').textContent =
+          parts[0] + ' · ' + entry.credits.toFixed(1) + ' 学分';
+      }
+      loadOrFallback();
+    })
+    .catch(function () {
+      tree = null;
+      loadOrFallback();
+    });
 
   var finder = document.querySelector('.finder');
   function placeFinder() {

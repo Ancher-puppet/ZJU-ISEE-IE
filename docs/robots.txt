@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ancher-puppet.github.io/ZJU-ISEE-IE/sitemap.xml

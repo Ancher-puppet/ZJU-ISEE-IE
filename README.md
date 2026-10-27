@@ -163,6 +163,7 @@ ZJU-ISEE-IE/
 ├── 大三上/            # 7 门
 ├── 大三下/            # 8 门
 ├── docs/              # 课程站
+├── tools/             # 重建索引、文件清单与 sitemap：python3 tools/build_site.py
 └── README.md
 ```
 
